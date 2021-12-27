@@ -1282,7 +1282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 898282066}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1655789597}
+        m_TargetAssemblyTypeName: EnterAccount, Assembly-CSharp
+        m_MethodName: registrationAccount
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HistoryScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &898282066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1509,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1655789597}
         m_TargetAssemblyTypeName: EnterAccount, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: enterAccount
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1557,6 +1569,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0eee1f3b1a44407b2c947b93d63597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loginText: {fileID: 1242004508}
+  loginInputField: {fileID: 378852710}
+  passwordText: {fileID: 683906466}
+  passwordInputField: {fileID: 841902141}
+  countriesDropdown: {fileID: 1026903665}
+  countryText: {fileID: 0}
 --- !u!1 &1026903663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1588,7 @@ GameObject:
   - component: {fileID: 1026903666}
   - component: {fileID: 1026903665}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: countriesDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1647,7 +1665,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
+    - m_Text: county
       m_Image: {fileID: 0}
     - m_Text: Option B
       m_Image: {fileID: 0}
@@ -2113,7 +2131,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: county
 --- !u!222 &1247039080
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2459,6 +2477,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0eee1f3b1a44407b2c947b93d63597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loginText: {fileID: 1242004508}
+  loginInputField: {fileID: 378852710}
+  passwordText: {fileID: 683906466}
+  passwordInputField: {fileID: 841902141}
+  countriesDropdown: {fileID: 1026903665}
+  countryText: {fileID: 1247039079}
 --- !u!1 &1937854882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,3 +2519,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &2048823119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2048823121}
+  - component: {fileID: 2048823120}
+  m_Layer: 0
+  m_Name: LoadCountries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2048823120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048823119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ecc8e26f000451cac5dc0ffe5716cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countriesDropdown: {fileID: 1026903665}
+--- !u!4 &2048823121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048823119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8224795, y: -1.466321, z: 215.2067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

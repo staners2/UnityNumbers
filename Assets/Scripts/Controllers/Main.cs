@@ -19,12 +19,13 @@ public class Main : MonoBehaviour
 
     public void enterAccount(string sceneName)
     {
+        Debug.Log("LOGIN START");
         if (!validationData())
             return;
         
         if (!profileIsFound())
             return;
-        
+
         SceneManager.LoadScene(sceneName);
     }
 
@@ -52,14 +53,14 @@ public class Main : MonoBehaviour
     public Boolean profileIsFound()
     {
         String login = loginText.text;
-        String password = passwordText.text;
-       // Int32 countryId = Storage.countries.countries
-       //     .Find(x => x.title == countriesDropdown.options[countriesDropdown.value].text).id;
- 
-        // отправляется запрос есть ли такой пользователь
-
-        // извлекается информация из ответа о пользователе
-        Profile profile = null; // конвертировать его в объект
+        String password = passwordInputField.text;
+        Int32 countryId = Storage.countries
+           .Find(x => x.title == countriesDropdown.options[countriesDropdown.value].text).id;
+        
+        StartCoroutine(RequestController.login(login, password, countryId));
+        new WaitUntil(() => Storage.isOperation == true);
+        
+        Profile profile = Storage.profile;
         if (profile == null)
             return false;
         else

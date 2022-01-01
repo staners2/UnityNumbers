@@ -5,6 +5,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public static class RequestController
@@ -53,4 +54,25 @@ public static class RequestController
           countriesDropdown.AddOptions(list);
           Debug.Log("Конец");
       }
+
+    public static IEnumerator login(String login, String password, Int32 country_id)
+    {
+        Storage.isOperation = true;
+        
+        Debug.Log("LOGIN REQUEST START");
+        var body = new WWWForm();
+        body.AddField("login", login);    
+        body.AddField("password", password);  
+        body.AddField("country_id", country_id.ToString());
+        
+        Debug.Log($"BODY = {body}");
+        UnityWebRequest request = UnityWebRequest.Post(URI+API_AUTHORIZE, body);
+        yield return request.SendWebRequest();
+        Debug.Log("LOGIN REQUEST END");
+        Debug.Log($"TEXT = {request.downloadHandler.text}");
+        Profile profile = JsonUtility.FromJson<Profile>(request.downloadHandler.text);
+        Storage.profile = profile;
+        
+        Storage.isOperation = false;
+    }
 }

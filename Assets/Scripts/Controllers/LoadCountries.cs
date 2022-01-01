@@ -15,12 +15,6 @@ public class LoadCountries : MonoBehaviour
     void Start()
     {
         countriesDropdown.ClearOptions();
-        // UnityWebRequest request = UnityWebRequest.Get(RequestController.URI + RequestController.API_COUNTRIES);
-        // var f = request.SendWebRequest();
-        // Debug.Log(f.webRequest.downloadHandler.text);
-        // StartCoroutine(RequestController.get());
         StartCoroutine(RequestController.getCountries(countriesDropdown));
-        
-        Debug.Log("START");
     }
 }

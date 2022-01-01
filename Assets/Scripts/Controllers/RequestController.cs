@@ -25,55 +25,32 @@ public static class RequestController
     public static String API_RANDOM_FACT = "userprofile/fact/random/{0}"; // 0 - type
     public static String API_FACT = "userprofile/fact/{0}/{1}"; // 0 - type, 1 - number
 
-    /* public static IEnumerable get(UnityWebRequestAsyncOperation request)
-    {
-        yield return request;
-        
-        if (request.isDone)
-        {
-            // String json = "{\"countries\":" + request.downloadHandler.text + "}";
-            // Countries countries = JsonUtility.FromJson<Countries>(json);
-            // Debug.Log(request.downloadHandler.text);
-            // Debug.Log(json);
-            // Debug.Log(countries.countries[0]);
-            
-            // Storage.countries = countries.countries.ToList();
-        
-            List<Country> items = new List<Country>();
-            foreach (var item in Storage.countries)
-            {
-                items.Add(new Country(item.id, item.title, item.prefix));
-            }
-
-            List<String> list = Storage.countries.Select(x => x.title).ToList();
-            //countriesDropdown.AddOptions(list);
-        }
-    }
-    */
     public static IEnumerator getCountries(Dropdown countriesDropdown)
-    { 
-        UnityWebRequest request = UnityWebRequest.Get(URI+API_COUNTRIES);
-        yield return request.SendWebRequest();
-        
-        Debug.Log(request.downloadHandler.text);
-        String json = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
-        // String json = "{\"countries\":" + request.downloadHandler.text + "}";
-        // String json = "{\"countries\":[{\"id\": 1, \"title\": \"\u0442\u0435\u0441\u0442\", \"prefix\": \"ru_title\"}]}";
-        // json = json.Replace("\\", "");
-        Debug.Log(json);
-        Countries countries = JsonUtility.FromJson<Countries>(json);
+      {
+          UnityWebRequest request = UnityWebRequest.Get(URI+API_COUNTRIES);
+          yield return request.SendWebRequest();
 
-        Debug.Log(countries.countries.Length);
-            
-        Storage.countries = countries.countries.ToList();
-        
-        List<Country> items = new List<Country>();
-        foreach (var item in Storage.countries)
-        {
-            items.Add(new Country(item.id, item.title, item.prefix));
-        }
+          Debug.Log(request.downloadHandler.text);
 
-        List<String> list = Storage.countries.Select(x => x.title).ToList();
-        countriesDropdown.AddOptions(list);
-    }
+          String test = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
+
+          Debug.Log(test);
+
+          String json = "{\"countries\":" + request.downloadHandler.text + "}";
+
+
+          Debug.Log(json);
+          Countries countries = JsonUtility.FromJson<Countries>(json);
+          
+          Storage.countries = countries.countries.ToList();
+
+          List<Country> items = new List<Country>();
+          foreach (var item in Storage.countries)
+          {
+              items.Add(new Country(item.id, item.title, item.prefix));
+          }
+          List<String> list = Storage.countries.Select(x => x.title).ToList();
+          countriesDropdown.AddOptions(list);
+          Debug.Log("Конец");
+      }
 }

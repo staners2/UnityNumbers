@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -23,10 +24,12 @@ public class Main : MonoBehaviour
         if (!validationData())
             return;
         
-        if (!profileIsFound())
-            return;
-
-        SceneManager.LoadScene(sceneName);
+        String login = loginText.text;
+        String password = passwordInputField.text;
+        Int32 countryId = Storage.countries
+            .Find(x => x.title == countriesDropdown.options[countriesDropdown.value].text).id;
+        
+        StartCoroutine(corutineLogin(sceneName, login, password, countryId));
     }
 
     public void registrationAccount(string sceneName)
@@ -34,10 +37,12 @@ public class Main : MonoBehaviour
         if (!validationData())
             return;
         
-        if (profileIsFound())
-            return;
-        
-        SceneManager.LoadScene(sceneName);
+        String login = loginText.text;
+        String password = passwordInputField.text;
+        Int32 countryId = Storage.countries
+            .Find(x => x.title == countriesDropdown.options[countriesDropdown.value].text).id;
+
+        StartCoroutine(corutineRegistration(sceneName, login, password, countryId));
     }
     
     public Boolean validationData() {
@@ -49,36 +54,26 @@ public class Main : MonoBehaviour
 
         return true;
     }
-
-    public Boolean profileIsFound()
+    
+    public IEnumerator corutineLogin(string sceneName, String login, String password, Int32 countryId)
     {
-        String login = loginText.text;
-        String password = passwordInputField.text;
-        Int32 countryId = Storage.countries
-           .Find(x => x.title == countriesDropdown.options[countriesDropdown.value].text).id;
-        
-        StartCoroutine(RequestController.login(login, password, countryId));
-        new WaitUntil(() => Storage.isOperation == true);
+        yield return RequestController.login(login, password, countryId);
+        Debug.Log($"CORUTINE END");
         
         Profile profile = Storage.profile;
-        if (profile == null)
-            return false;
-        else
-        {
-            Storage.profile = profile;
-            return true;
-        }
+        Debug.Log($"PROFILE IS NULL = {profile == null}");
+        if (profile != null)
+            SceneManager.LoadScene(sceneName);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public IEnumerator corutineRegistration(string sceneName, String login, String password, Int32 countryId)
     {
+        yield return RequestController.registration(login, password, countryId);
+        Debug.Log($"CORUTINE END");
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        Profile profile = Storage.profile;
+        Debug.Log($"PROFILE IS NULL = {profile == null}");
+        if (profile != null)
+            SceneManager.LoadScene(sceneName);
     }
 }

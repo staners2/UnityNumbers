@@ -70,9 +70,43 @@ public static class RequestController
         yield return request.SendWebRequest();
         Debug.Log("LOGIN REQUEST END");
         Debug.Log($"TEXT = {request.downloadHandler.text}");
-        Profile profile = JsonUtility.FromJson<Profile>(request.downloadHandler.text);
-        Storage.profile = profile;
+        if (!request.downloadHandler.text.Contains("errors"))
+        {
+            Profile profile = JsonUtility.FromJson<Profile>(request.downloadHandler.text);
+            Storage.profile = profile;
+        }
+        else
+        {
+            Storage.profile = null;
+        }
+        Storage.isOperation = false;
+    }
+
+    public static IEnumerator registration(String login, String password, Int32 country_id)
+    {
+        Storage.isOperation = true;
         
+        Debug.Log("REGISTRATION REQUEST START");
+        var body = new WWWForm();
+        body.AddField("login", login);    
+        body.AddField("password", password);  
+        body.AddField("country_id", country_id.ToString());
+        
+        Debug.Log($"BODY = {body}");
+        UnityWebRequest request = UnityWebRequest.Post(URI+API_REGISTRATION, body);
+        yield return request.SendWebRequest();
+        
+        Debug.Log("REGISTRATION REQUEST END");
+        Debug.Log($"TEXT = {request.downloadHandler.text}");
+        if (!request.downloadHandler.text.Contains("errors"))
+        {
+            Profile profile = JsonUtility.FromJson<Profile>(request.downloadHandler.text);
+            Storage.profile = profile;
+        }
+        else
+        {
+            Storage.profile = null;
+        }
         Storage.isOperation = false;
     }
 }

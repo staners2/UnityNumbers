@@ -28,6 +28,8 @@ public static class RequestController
 
     public static IEnumerator getCountries(Dropdown countriesDropdown)
       {
+          Storage.isOperation = true;
+          
           UnityWebRequest request = UnityWebRequest.Get(URI+API_COUNTRIES);
           yield return request.SendWebRequest();
 
@@ -52,7 +54,8 @@ public static class RequestController
           }
           List<String> list = Storage.countries.Select(x => x.title).ToList();
           countriesDropdown.AddOptions(list);
-          Debug.Log("Конец");
+          
+          Storage.isOperation = false;
       }
 
     public static IEnumerator login(String login, String password, Int32 country_id)
@@ -107,6 +110,30 @@ public static class RequestController
         {
             Storage.profile = null;
         }
+        Storage.isOperation = false;
+    }
+
+    public static IEnumerator getTypes(Dropdown typesDropdown)
+    {
+        Storage.isOperation = true;
+        
+        Debug.Log("TYPES REQUEST START");
+        UnityWebRequest request = UnityWebRequest.Get(URI+API_TYPES);
+        yield return request.SendWebRequest();
+        
+        Debug.Log("TYPES REQUEST END");
+        Debug.Log($"TEXT = {request.downloadHandler.text}");
+        
+        String json = "{\"types\":" + request.downloadHandler.text + "}";
+        
+        if (!request.downloadHandler.text.Contains("errors"))
+        {
+            Types types = JsonUtility.FromJson<Types>(json);
+            Storage.types = types.types.ToList();
+            List<String> list = Storage.types.Select(x => x.title).ToList();
+            typesDropdown.AddOptions(list);
+        }
+
         Storage.isOperation = false;
     }
 }

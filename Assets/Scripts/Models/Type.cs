@@ -7,13 +7,13 @@ using UnityEngine;
 public class Type
 {
     public Int32 id;
-    public String ru_title;
+    public String title;
     public String en_title;
 
-    public Type(Int32 id, String ru_title, String en_title)
+    public Type(Int32 id, String title, String en_title)
     {
         this.id = id;
-        this.ru_title = ru_title;
+        this.title = title;
         this.en_title = en_title;
     }
 }

@@ -60,7 +60,7 @@
      <Compile Include="Assets\Scripts\Controllers\Storage.cs" />
      <Compile Include="Assets\Scripts\Models\Type.cs" />
      <Compile Include="Assets\Scripts\Models\Fact.cs" />
-     <Compile Include="Assets\Scripts\Models\Profile.cs" />
+     <Compile Include="Assets\Scripts\Models\UserProfile.cs" />
      <Compile Include="Assets\Scripts\item.cs" />
      <Compile Include="Assets\Scripts\Controllers\RequestController.cs" />
      <Compile Include="Assets\Scripts\Controllers\Main.cs" />

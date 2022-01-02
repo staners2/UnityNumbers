@@ -75,12 +75,12 @@ public static class RequestController
         Debug.Log($"TEXT = {request.downloadHandler.text}");
         if (!request.downloadHandler.text.Contains("errors"))
         {
-            Profile profile = JsonUtility.FromJson<Profile>(request.downloadHandler.text);
-            Storage.profile = profile;
+            UserProfile userProfile = JsonUtility.FromJson<UserProfile>(request.downloadHandler.text);
+            Storage.UserProfile = userProfile;
         }
         else
         {
-            Storage.profile = null;
+            Storage.UserProfile = null;
         }
         Storage.isOperation = false;
     }
@@ -103,12 +103,12 @@ public static class RequestController
         Debug.Log($"TEXT = {request.downloadHandler.text}");
         if (!request.downloadHandler.text.Contains("errors"))
         {
-            Profile profile = JsonUtility.FromJson<Profile>(request.downloadHandler.text);
-            Storage.profile = profile;
+            UserProfile userProfile = JsonUtility.FromJson<UserProfile>(request.downloadHandler.text);
+            Storage.UserProfile = userProfile;
         }
         else
         {
-            Storage.profile = null;
+            Storage.UserProfile = null;
         }
         Storage.isOperation = false;
     }

@@ -6,7 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class Fact : MonoBehaviour
 {
+    public Int32 id;
+    public Type type;
     public Int32 number;
     public String description;
-    public Type type;
+    public String date;
 }

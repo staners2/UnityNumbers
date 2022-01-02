@@ -60,9 +60,9 @@ public class Main : MonoBehaviour
         yield return RequestController.login(login, password, countryId);
         Debug.Log($"CORUTINE END");
         
-        Profile profile = Storage.profile;
-        Debug.Log($"PROFILE IS NULL = {profile == null}");
-        if (profile != null)
+        UserProfile userProfile = Storage.UserProfile;
+        Debug.Log($"PROFILE IS NULL = {userProfile == null}");
+        if (userProfile != null)
             SceneManager.LoadScene(sceneName);
     }
 
@@ -71,9 +71,9 @@ public class Main : MonoBehaviour
         yield return RequestController.registration(login, password, countryId);
         Debug.Log($"CORUTINE END");
         
-        Profile profile = Storage.profile;
-        Debug.Log($"PROFILE IS NULL = {profile == null}");
-        if (profile != null)
+        UserProfile userProfile = Storage.UserProfile;
+        Debug.Log($"PROFILE IS NULL = {userProfile == null}");
+        if (userProfile != null)
             SceneManager.LoadScene(sceneName);
     }
 }

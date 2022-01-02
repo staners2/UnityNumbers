@@ -6,7 +6,7 @@ using UnityEngine;
 public class Storage
 {
     public static List<Country> countries;
-    public static Profile profile;
+    public static UserProfile UserProfile;
     public static List<Type> types;
     
     // Corutine в процессе выполнения

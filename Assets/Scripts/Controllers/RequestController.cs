@@ -76,11 +76,11 @@ public static class RequestController
         if (!request.downloadHandler.text.Contains("errors"))
         {
             UserProfile userProfile = JsonUtility.FromJson<UserProfile>(request.downloadHandler.text);
-            Storage.UserProfile = userProfile;
+            Storage.userProfile = userProfile;
         }
         else
         {
-            Storage.UserProfile = null;
+            Storage.userProfile = null;
         }
         Storage.isOperation = false;
     }
@@ -104,11 +104,11 @@ public static class RequestController
         if (!request.downloadHandler.text.Contains("errors"))
         {
             UserProfile userProfile = JsonUtility.FromJson<UserProfile>(request.downloadHandler.text);
-            Storage.UserProfile = userProfile;
+            Storage.userProfile = userProfile;
         }
         else
         {
-            Storage.UserProfile = null;
+            Storage.userProfile = null;
         }
         Storage.isOperation = false;
     }

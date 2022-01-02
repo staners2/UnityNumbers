@@ -60,7 +60,7 @@ public class Main : MonoBehaviour
         yield return RequestController.login(login, password, countryId);
         Debug.Log($"CORUTINE END");
         
-        UserProfile userProfile = Storage.UserProfile;
+        UserProfile userProfile = Storage.userProfile;
         Debug.Log($"PROFILE IS NULL = {userProfile == null}");
         if (userProfile != null)
             SceneManager.LoadScene(sceneName);
@@ -71,7 +71,7 @@ public class Main : MonoBehaviour
         yield return RequestController.registration(login, password, countryId);
         Debug.Log($"CORUTINE END");
         
-        UserProfile userProfile = Storage.UserProfile;
+        UserProfile userProfile = Storage.userProfile;
         Debug.Log($"PROFILE IS NULL = {userProfile == null}");
         if (userProfile != null)
             SceneManager.LoadScene(sceneName);

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public static class RequestController
 {
@@ -134,6 +135,33 @@ public static class RequestController
             typesDropdown.AddOptions(list);
         }
 
+        Storage.isOperation = false;
+    }
+
+    public static IEnumerator getFactByNumber(int userProfileId, int number, String typeName, Text descriptionField)
+    {
+        Storage.isOperation = true;
+        
+        var body = new WWWForm();
+        body.AddField("userprofile_id", userProfileId);
+
+        String urlApiFact = String.Format(API_FACT, typeName, number);
+        Debug.Log($"URI: {URI+urlApiFact}");
+        
+        Debug.Log($"BODY = {body}");
+        
+        Debug.Log("GET FACT BY NUMBER REQUEST START");
+        UnityWebRequest request = UnityWebRequest.Post(URI+urlApiFact, body);
+        yield return request.SendWebRequest();
+        
+        Debug.Log("GET FACT BY NUMBER REQUEST END");
+        Debug.Log($"TEXT = {request.downloadHandler.text}");
+        if (!request.downloadHandler.text.Contains("errors"))
+        {
+            Fact fact = JsonUtility.FromJson<Fact>(request.downloadHandler.text);
+            descriptionField.text = fact.description;
+        }
+        
         Storage.isOperation = false;
     }
 }

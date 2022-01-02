@@ -17,6 +17,12 @@ public class Main : MonoBehaviour
 
     public Dropdown countriesDropdown;
     public Text countryText;
+    
+    void Start()
+    {
+        countriesDropdown.ClearOptions();
+        StartCoroutine(RequestController.getCountries(countriesDropdown));
+    }
 
     public void enterAccount(string sceneName)
     {

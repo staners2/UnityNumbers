@@ -55,17 +55,16 @@
      <Compile Include="Assets\Scripts\Models\Types.cs" />
      <Compile Include="Assets\Scripts\Models\History.cs" />
      <Compile Include="Assets\Scripts\Models\Countries.cs" />
-     <Compile Include="Assets\Scripts\Controllers\LoadCountries.cs" />
      <Compile Include="Assets\Scripts\Models\Histories.cs" />
      <Compile Include="Assets\Scripts\Controllers\Storage.cs" />
      <Compile Include="Assets\Scripts\Models\Type.cs" />
      <Compile Include="Assets\Scripts\Models\Fact.cs" />
+     <Compile Include="Assets\Scripts\Controllers\FactsConroller.cs" />
      <Compile Include="Assets\Scripts\Models\UserProfile.cs" />
      <Compile Include="Assets\Scripts\item.cs" />
      <Compile Include="Assets\Scripts\Controllers\RequestController.cs" />
      <Compile Include="Assets\Scripts\Controllers\Main.cs" />
      <Compile Include="Assets\Scripts\Models\Country.cs" />
-     <Compile Include="Assets\Scripts\Controllers\LoadTypes.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

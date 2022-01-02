@@ -164,4 +164,32 @@ public static class RequestController
         
         Storage.isOperation = false;
     }
+    
+    public static IEnumerator getFactRandom(int userProfileId, String typeName, Text descriptionField, InputField inputNumberField)
+    {
+        Storage.isOperation = true;
+        
+        var body = new WWWForm();
+        body.AddField("userprofile_id", userProfileId);
+
+        String urlApiFact = String.Format(API_RANDOM_FACT, typeName);
+        Debug.Log($"URI: {URI+urlApiFact}");
+        
+        Debug.Log($"BODY = {body}");
+        
+        Debug.Log("GET FACT RANDOM REQUEST START");
+        UnityWebRequest request = UnityWebRequest.Post(URI+urlApiFact, body);
+        yield return request.SendWebRequest();
+        
+        Debug.Log("GET FACT RANDOM REQUEST END");
+        Debug.Log($"TEXT = {request.downloadHandler.text}");
+        if (!request.downloadHandler.text.Contains("errors"))
+        {
+            Fact fact = JsonUtility.FromJson<Fact>(request.downloadHandler.text);
+            descriptionField.text = fact.description;
+            inputNumberField.text = fact.number.ToString();
+        }
+        
+        Storage.isOperation = false;
+    }
 }

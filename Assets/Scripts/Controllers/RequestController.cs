@@ -216,4 +216,16 @@ public static class RequestController
 
         Storage.isOperation = false;
     }
+
+    public static IEnumerator deleteHistory(int historyId)
+    {
+        Storage.isOperation = true;
+
+        String urlHistory = String.Format(API_DELETE_HISTORIES, Storage.userProfile.id, historyId);
+        Debug.Log(urlHistory);
+        UnityWebRequest request = UnityWebRequest.Delete(URI + urlHistory);
+        yield return request.SendWebRequest();
+
+        Storage.isOperation = false;
+    }
 }

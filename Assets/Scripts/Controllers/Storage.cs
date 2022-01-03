@@ -8,7 +8,7 @@ public class Storage
     public static List<Country> countries;
     public static UserProfile userProfile;
     public static List<Type> types;
-    public static List<Histories> histories;
+    public static List<History> histories;
     
     // Corutine в процессе выполнения
     public static Boolean isOperation;

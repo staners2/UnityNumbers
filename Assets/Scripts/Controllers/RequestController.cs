@@ -192,4 +192,28 @@ public static class RequestController
         
         Storage.isOperation = false;
     }
+
+    public static IEnumerator getHistory(int userProfileId)
+    {
+        
+        Storage.isOperation = true;
+                
+        String urlHistory = String.Format(API_HISTORIES, userProfileId);
+        Debug.Log(urlHistory);
+        UnityWebRequest request = UnityWebRequest.Get(URI + urlHistory);
+        yield return request.SendWebRequest();
+
+        Debug.Log("TYPES REQUEST END");
+        Debug.Log($"TEXT = {request.downloadHandler.text}");
+        String json = "{\"histories\":" + request.downloadHandler.text + "}";        
+        if (!request.downloadHandler.text.Contains("errors"))
+        {
+            Histories histories = JsonUtility.FromJson<Histories>(json);           
+            Storage.histories = histories.histories.ToList();
+            
+        }
+        Debug.Log(Storage.histories);
+        //UnityWebRequest request = UnityWebRequest.Post(URI + API_HISTORIES, body);
+        Storage.isOperation = false;
+    }
 }

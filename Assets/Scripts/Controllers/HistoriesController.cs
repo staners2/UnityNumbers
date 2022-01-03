@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HistoriesController : MonoBehaviour
 {
@@ -12,34 +13,9 @@ public class HistoriesController : MonoBehaviour
 
     void Start()
     {
-        //Хз как очистить список
         Debug.Log("VOID START");
         StartCoroutine(RequestController.getHistory(this, Storage.userProfile.id, _object, parent));
-        //int i = 0;
-        //float k = -.0f;
-        //var resolve = (GameObject)Instantiate(_object, new Vector3(0, y, 0), Quaternion.identity, parent);
-        //GameObject[] arr = new GameObject[Storage.histories.Count];
-        //GameObject[] arr = new GameObject[10];
-        //foreach (var item in Storage.histories)
-        //{
-        //    //_object.descriptionText = item.description;
-        //    arr[i] = Instantiate(_object, parent);            
-        //    k = k-.240f;
-        //    arr[i].transform.Translate(.0f, k, .0f);
-        //    //arr[i].;
-        //    i++;
-
-
-        //}
-        
-        
-
-        //resolve.transform.Translate(0, -60, 0);
-
-
     }
-
-    //Метод для удаление факта
 
     public void closeHistoryScene(String sceneName)
     {
@@ -52,14 +28,26 @@ public class HistoriesController : MonoBehaviour
         int i = 0;
         Debug.Log(Storage.histories.Count);
         listObjectHistory.Add(Instantiate(_object, parent));
+        //listObjectHistory[0].transform;
+        create(listObjectHistory[0], Storage.histories[0].fact.type.title, Storage.histories[0].fact.number, Storage.histories[0].fact.description, Storage.histories[0].fact.date);
         listObjectHistory[0].transform.Translate(.0f, k, .0f);
         for (i = 1; i < Storage.histories.Count; i++)
         {
             listObjectHistory.Add(Instantiate(_object, parent));
+            create(listObjectHistory[i], Storage.histories[i].fact.type.title, Storage.histories[i].fact.number, Storage.histories[i].fact.description, Storage.histories[i].fact.date);
             k = k - 1.920f;
             listObjectHistory[i].transform.Translate(.0f, k, .0f);
         }
 
+    }
+
+    public void create(GameObject parent, String type, int number, String description, String date)
+    {
+        Debug.Log($"DATE: {date} | TYPE: {type} | NUMBER: {number} | DESCRIPTION: {description}");
+        parent.transform.GetChild(0).GetComponent<Text>().text = date;
+        parent.transform.GetChild(1).GetComponent<Text>().text += type;
+        parent.transform.GetChild(2).GetComponent<Text>().text += number.ToString();
+        parent.transform.GetChild(3).GetComponent<Text>().text = description;
     }
 
 }

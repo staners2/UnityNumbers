@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SocialPlatforms.Impl;
@@ -208,8 +207,14 @@ public static class RequestController
         String json = "{\"histories\":" + request.downloadHandler.text + "}";        
         if (!request.downloadHandler.text.Contains("errors"))
         {
-            Histories histories = JsonUtility.FromJson<Histories>(json);           
-            Storage.histories = histories.histories.ToList();
+            Histories histories = JsonUtility.FromJson<Histories>(json);
+            var list = histories.histories.ToList();
+            foreach (var item in list)
+            {
+                item.fact.date = item.fact.date.Replace("T", " ");
+                item.fact.date = item.fact.date.Replace("Z", "");
+            }
+            Storage.histories = list;
             controller.loadHistories();
         }
 

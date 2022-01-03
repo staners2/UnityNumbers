@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -179.74303, y: 18.130005}
-  m_SizeDelta: {x: 79.5139, y: 23.74}
+  m_AnchoredPosition: {x: -47.253967, y: 18.130005}
+  m_SizeDelta: {x: 130.81, y: 23.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2994842828957214960
 CanvasRenderer:
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Theme: '
 --- !u!1 &2994842829070813396
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,8 +314,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90.839, y: 18.130005}
-  m_SizeDelta: {x: 98.294, y: 23.74}
+  m_AnchoredPosition: {x: 114.08241, y: 18.130005}
+  m_SizeDelta: {x: 191.8588, y: 23.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2994842830158530502
 CanvasRenderer:
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Number: '
 --- !u!1 &2994842830222943524
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,8 +393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272.683, y: 18.130005}
-  m_SizeDelta: {x: 92.034, y: 23.74}
+  m_AnchoredPosition: {x: -215.68, y: 18.130005}
+  m_SizeDelta: {x: 206.04, y: 23.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2994842830222943531
 CanvasRenderer:

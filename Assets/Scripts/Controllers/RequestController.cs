@@ -193,11 +193,11 @@ public static class RequestController
         Storage.isOperation = false;
     }
 
-    public static IEnumerator getHistory(int userProfileId)
-    {
-        
+    public static IEnumerator getHistory(HistoriesController controller, int userProfileId, GameObject _object, Transform parent)
+    {        
+
         Storage.isOperation = true;
-                
+
         String urlHistory = String.Format(API_HISTORIES, userProfileId);
         Debug.Log(urlHistory);
         UnityWebRequest request = UnityWebRequest.Get(URI + urlHistory);
@@ -210,10 +210,9 @@ public static class RequestController
         {
             Histories histories = JsonUtility.FromJson<Histories>(json);           
             Storage.histories = histories.histories.ToList();
-            
+            controller.loadHistories();
         }
-        Debug.Log(Storage.histories);
-        //UnityWebRequest request = UnityWebRequest.Post(URI + API_HISTORIES, body);
+
         Storage.isOperation = false;
     }
 }

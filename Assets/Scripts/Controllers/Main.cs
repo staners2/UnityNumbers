@@ -20,6 +20,7 @@ public class Main : MonoBehaviour
     
     void Start()
     {
+        Debug.Log("START");
         countriesDropdown.ClearOptions();
         StartCoroutine(RequestController.getCountries(countriesDropdown));
     }

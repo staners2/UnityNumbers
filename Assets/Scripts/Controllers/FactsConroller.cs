@@ -17,6 +17,7 @@ public class FactsConroller : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("START");
         typesDropdown.ClearOptions();
         StartCoroutine(RequestController.getTypes(typesDropdown));
     }
@@ -41,6 +42,16 @@ public class FactsConroller : MonoBehaviour
 
     public void openHistoryScene(String sceneName)
     {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void quitAccount(String sceneName)
+    {
+        Storage.countries = null;
+        Storage.histories = null;
+        Storage.types = null;
+        Storage.userProfile = null;
+        
         SceneManager.LoadScene(sceneName);
     }
 

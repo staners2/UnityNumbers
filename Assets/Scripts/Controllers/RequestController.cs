@@ -35,10 +35,6 @@ public static class RequestController
 
           Debug.Log(request.downloadHandler.text);
 
-          String test = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
-
-          Debug.Log(test);
-
           String json = "{\"countries\":" + request.downloadHandler.text + "}";
 
 

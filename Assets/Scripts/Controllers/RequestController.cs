@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 public static class RequestController
 {
     public static String SCHEMA = "http";
-    public static String URL = "127.0.0.1"; //10.0.2.2
+    public static String URL = "10.0.2.2"; //10.0.2.2
     public static String BASE_PATH = "/api/";
     public static Int32 PORT = 8000;
     public static String URI = $"{SCHEMA}://{URL}:{PORT}{BASE_PATH}";
